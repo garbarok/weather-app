@@ -1,20 +1,30 @@
 <template>
-  <div v-if="currentWeather" class="h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-2 gap-4 items-center">
+  <div
+    v-if="currentWeather"
+    class="h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-2 gap-4 items-center"
+  >
     <section class="grid grid-flow-col grid-rows-2 items-center">
       <div>
-        <h1 class="text-white text-2xl">{{ currentWeather.name }}, {{ currentWeather.sys.country }}</h1>
-        <h2 class="text-white">{{ new Date(currentWeather.dt * 1000).toLocaleString('en-UK', {
+        <h1 class="text-white text-2xl">
+          {{ currentWeather.name }}, {{ currentWeather.sys.country }}
+        </h1>
+        <h2 class="text-white">
+          {{
+            new Date(currentWeather.dt * 1000).toLocaleString('en-UK', {
               weekday: 'long',
               day: 'numeric',
               month: 'long'
-            }) }}</h2>
+            })
+          }}
+        </h2>
       </div>
-      <img class="w-20 h-20 self-start"
+      <img
+        class="w-20 h-20 self-start"
         :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
         :alt="`${currentWeather.weather[0].description} icon`"
       />
       <div>
-        <p class="text-white text-5xl mb-3">{{ (currentWeather.main.temp.toFixed(1)) }} °C</p>
+        <p class="text-white text-5xl mb-3">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
         <p class="text-gray-200 text-lg">{{ currentWeather.weather[0].main }}</p>
       </div>
     </section>
@@ -46,7 +56,6 @@
     </section>
   </div>
 </template>
-
 
 <script>
 import { fetchWeather } from '../api/weather.js'

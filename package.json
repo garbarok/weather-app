@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "geocoder": "^0.2.3",
     "vue": "^3.2.47",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2"

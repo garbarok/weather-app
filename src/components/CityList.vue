@@ -14,48 +14,45 @@
       @click="toggleShowMore"
       class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded transition-colors duration-150"
     >
-      {{ showMore ? "Show Less" : "Show More" }}
+      {{ showMore ? 'Show Less' : 'Show More' }}
     </button>
   </div>
 </template>
 
-
-
 <script>
-import { ref, computed } from 'vue';
-import { useStore } from 'vuex';
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   emits: ['city-clicked'],
   setup(_, { emit }) {
-    const store = useStore();
-    const savedCities = computed(() => store.getters.getSavedCities);
+    const store = useStore()
+    const savedCities = computed(() => store.getters.getSavedCities)
 
     const onCityClick = (cityName, stateName) => {
       const cityData = {
         cityName,
-        stateName,
-      };
-      emit('city-clicked', cityData);
-    };
+        stateName
+      }
+      emit('city-clicked', cityData)
+    }
 
-    const showMore = ref(false);
+    const showMore = ref(false)
     const toggleShowMore = () => {
-      showMore.value = !showMore.value;
-    };
+      showMore.value = !showMore.value
+    }
 
     const limitedCities = computed(() => {
-      return showMore.value ? savedCities.value : savedCities.value.slice(0, 5);
-    });
+      return showMore.value ? savedCities.value : savedCities.value.slice(0, 5)
+    })
 
     return {
       savedCities,
       onCityClick,
       showMore,
       toggleShowMore,
-      limitedCities,
-    };
-  },
-};
+      limitedCities
+    }
+  }
+}
 </script>
-

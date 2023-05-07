@@ -5,7 +5,7 @@
       <WeatherViewer v-if="!showRouterView" :weather="weather" class="mb-6" />
       <router-view v-if="showRouterView" class="mb-6"></router-view>
       <today-forecast v-if="city" :city="city" :state="state" class="mb-6"></today-forecast>
-      <CityList @city-clicked="onCityClick"  />
+      <CityList @city-clicked="onCityClick" />
     </div>
   </div>
 </template>
@@ -65,13 +65,23 @@ export default {
       return router.currentRoute.value.path !== '/'
     })
 
-    return { weather, updateWeather, onSearchSubmit, showRouterView, onCityClick, city, state, hasWeatherData }
+    return {
+      weather,
+      updateWeather,
+      onSearchSubmit,
+      showRouterView,
+      onCityClick,
+      city,
+      state,
+      hasWeatherData
+    }
   }
 }
 </script>
 
 <style>
-html,body{
+html,
+body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 400;
