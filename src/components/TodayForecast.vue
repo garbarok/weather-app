@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
@@ -34,20 +34,33 @@ export default {
     formatDate(timestamp) {
       const date = new Date(timestamp * 1000)
       return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-    }
+    },
   },
+
   setup(props) {
     const store = useStore()
     const weatherForecast = ref(null)
 
-    onMounted(async () => {
+    const fetchWeatherForecast = async () => {
       const weatherData = await store.dispatch('fetchWeatherForecast', {
         city: props.city,
         state: props.state,
       })
 
       weatherForecast.value = weatherData
+    }
+
+    onMounted(async () => {
+      await fetchWeatherForecast()
     })
+
+    watch(
+      () => [props.city, props.state],
+      async () => {
+        await fetchWeatherForecast()
+      },
+      { deep: true }
+    )
 
     return {
       weatherForecast
@@ -55,6 +68,8 @@ export default {
   }
 }
 </script>
+
+
 
 <style scoped>
 div {
