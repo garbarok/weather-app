@@ -23,7 +23,7 @@
         :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
         :alt="`${currentWeather.weather[0].description} icon`"
       />
-      <div>
+      <div class="flex flex-col items-center justify-center">
         <p class="text-white text-5xl mb-3">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
         <p class="text-gray-200 text-lg">{{ currentWeather.weather[0].main }}</p>
       </div>

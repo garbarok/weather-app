@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white shadow-md rounded-lg p-4">
-    <ul>
-      <li v-for="city in limitedCities" :key="city.name" class="mb-2">
-        <div @click="onCityClick(city.name, city.state)" class="hover:bg-blue-100 p-1 rounded">
-          <router-link :to="`/location-weather/${city.name}/${city.state}`">
+    <ul class="space-y-2">
+      <li v-for="city in limitedCities" :key="city.name">
+        <div @click="onCityClick(city.name, city.state)" class="hover:bg-blue-100 p-1 rounded cursor-pointer">
+          <router-link :to="`/location-weather/${city.name}/${city.state}`" class="block">
             {{ city.name }}, {{ city.state }}
           </router-link>
         </div>
@@ -12,12 +12,13 @@
     <button
       v-if="savedCities.length > 5"
       @click="toggleShowMore"
-      class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded transition-colors duration-150"
+      class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded transition-colors duration-150 w-full mt-2"
     >
       {{ showMore ? 'Show Less' : 'Show More' }}
     </button>
   </div>
 </template>
+
 
 <script>
 import { ref, computed } from 'vue'

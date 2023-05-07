@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-5 gap-4 items-center"
+    class="h-full sm:h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-1 sm:grid-cols-5 gap-4 items-center"
   >
     <div v-for="weather in weatherForecast" :key="weather.dt" class="bg-blue-600 rounded p-4">
       <h3 class="text-white text-center">{{ formatDate(weather.dt) }}</h3>
@@ -15,6 +15,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import { watch, ref, onMounted } from 'vue'

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="currentWeather"
-    class="h-46 w-full p-6 rounded-lg shadow-md grid grid-cols-2 gap-4 items-center"
+    class="h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-2 gap-4 items-center"
   >
     <section class="grid grid-flow-col grid-rows-2 items-center">
       <div>
@@ -23,7 +23,7 @@
         :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
         :alt="`${currentWeather.weather[0].description} icon`"
       />
-      <div>
+      <div class="flex flex-col items-center justify-center">
         <p class="text-white text-5xl mb-3">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
         <p class="text-gray-200 text-lg">{{ currentWeather.weather[0].main }}</p>
       </div>
