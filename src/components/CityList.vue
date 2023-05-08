@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow-md rounded-lg p-4">
+  <div class="bg-white shadow-md rounded-lg p-4" v-if="limitedCities.length>0">
     <ul class="space-y-2">
       <li v-for="city in limitedCities" :key="city.name">
         <div @click="onCityClick(city.name, city.state)" class="hover:bg-blue-100 p-1 rounded cursor-pointer">

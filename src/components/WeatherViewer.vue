@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="currentWeather"
-    class="h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-lg shadow-md grid grid-cols-2 gap-4 items-center"
+    class="h-auto md:h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-4 md:p-6 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 items-center"
   >
-    <section class="grid grid-flow-col grid-rows-2 items-center">
+    <section class="grid grid-flow-row md:grid-flow-col grid-rows-3 md:grid-rows-2 items-center">
       <div>
         <h1 class="text-white text-2xl">
           {{ currentWeather.name }}, {{ currentWeather.sys.country }}
@@ -19,7 +19,7 @@
         </h2>
       </div>
       <img
-        class="w-20 h-20 self-start"
+        class="w-20 h-20 self-center"
         :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
         :alt="`${currentWeather.weather[0].description} icon`"
       />
@@ -28,7 +28,7 @@
         <p class="text-gray-200 text-lg">{{ currentWeather.weather[0].main }}</p>
       </div>
     </section>
-    <section class="grid grid-cols-3 grid-rows-2 gap-4">
+    <section class="grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-4 mt-4 md:mt-0">
       <div class="text-center">
         <p class="text-white font-bold">{{ currentWeather.main.temp_max.toFixed(1) }}°C</p>
         <p class="text-gray-200 text-xs">High</p>

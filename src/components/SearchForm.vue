@@ -1,39 +1,43 @@
 <template>
   <form
     @submit.prevent="searchWeather"
-    class="flex flex-wrap items-center space-x-4 bg-white p-4 rounded-lg shadow-md"
+    class="bg-white p-4 rounded-lg shadow-md"
   >
-    <input
-      v-model="cityName"
-      :required="!loadingLocation"
-      placeholder="City"
-      class="flex-grow w-full sm:w-auto border-2 border-gray-300 p-2 rounded focus:outline-none focus:border-violet-500 mb-2 sm:mb-0 sm:mr-2"
-    />
-    <input
-      v-model="stateName"
-      :required="!loadingLocation"
-      placeholder="State"
-      class="flex-grow w-full sm:w-auto border-2 border-gray-300 p-2 rounded focus:outline-none focus:border-violet-500 mb-2 sm:mb-0 sm:mr-2"
-    />
-    <button
-      type="submit"
-      class="bg-violet-500 text-white py-2 px-4 rounded hover:bg-violet-600 transition-colors duration-300 w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2"
-    >
-      Search
-    </button>
-    <button
-      @click="handleSaveCity(cityName, stateName)"
-      class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2"
-    >
-      Save City
-    </button>
-    <button
-      @click="getCurrentLocation"
-      type="button"
-      class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300 w-full sm:w-auto"
-    >
-      Get Current Location
-    </button>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+      <input
+        v-model="cityName"
+        :required="!loadingLocation"
+        placeholder="City"
+        class="flex-grow w-full border-2 border-gray-300 p-2 rounded focus:outline-none focus:border-violet-500"
+      />
+      <input
+        v-model="stateName"
+        :required="!loadingLocation"
+        placeholder="State"
+        class="flex-grow w-full border-2 border-gray-300 p-2 rounded focus:outline-none focus:border-violet-500"
+      />
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 mt-4">
+      <button
+        type="submit"
+        class="bg-violet-500 text-white py-2 px-4 rounded hover:bg-violet-600 transition-colors duration-300 w-full sm:w-auto"
+      >
+        Search
+      </button>
+      <button
+        @click="handleSaveCity(cityName, stateName)"
+        class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 w-full sm:w-auto mt-2 sm:mt-0"
+      >
+        Save City
+      </button>
+      <button
+        @click="getCurrentLocation"
+        type="button"
+        class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300 w-full sm:w-auto mt-2 sm:mt-0"
+      >
+        Get Current Location
+      </button>
+    </div>
   </form>
 </template>
 

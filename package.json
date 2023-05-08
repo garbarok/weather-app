@@ -1,6 +1,6 @@
 {
   "name": "weather-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "geocoder": "^0.2.3",
     "vue": "^3.2.47",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2"
