@@ -10,6 +10,11 @@ const store = createStore({
   mutations: {
     addCity(state, city) {
       state.savedCities.push(city)
+    },
+    removeCity(state, city) {
+      state.savedCities = state.savedCities.filter(
+        (item) => item.name !== city.name || item.state !== city.state
+      )
     }
   },
   actions: {
