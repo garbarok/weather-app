@@ -1,6 +1,7 @@
 <template>
-  <div id="app" class="min-h-screen py-8 h-18">
+  <div id="app" class="py-8 h-18 bg-[#F5F5F5] h-screen">
     <div class="container mx-auto px-4 max-w-screen-lg">
+      <h1 class="text-4xl font-bold text-center p-5">Weather App</h1>
       <SearchForm @update-weather="updateWeather" @search-submitted="onSearchSubmit" class="mb-6" />
       <WeatherViewer v-if="!showRouterView" :weather="weather" class="mb-6" />
       <router-view v-if="showRouterView" class="mb-6"></router-view>
@@ -79,7 +80,7 @@ export default {
 }
 </script>
 
-<style>
+<!-- <style>
 html,
 body {
   font-family: 'Roboto', sans-serif;
@@ -88,4 +89,4 @@ body {
   line-height: 1.5;
   background-color: bg-gradient-to-tl from-sky-500 to-indigo-500;
 }
-</style>
+</style> -->

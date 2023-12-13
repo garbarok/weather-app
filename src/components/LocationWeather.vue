@@ -1,57 +1,47 @@
 <template>
-  <div
-    v-if="currentWeather"
-    class="h-auto md:h-46 w-full bg-gradient-to-r from-blue-500 to-indigo-600 p-4 md:p-6 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 items-center"
-  >
-    <section class="grid grid-flow-row md:grid-flow-col grid-rows-3 md:grid-rows-2 items-center">
-      <div>
-        <h1 class="text-white text-2xl">
+  <h3 class="text-3xl font-bold p-3 text-center">
+    Today's Forecast
+  </h3>
+  <div v-if="currentWeather" class="hero rounded-lg shadow-md h-auto">
+    <section class="w-full p-10 grid grid-cols-1 xl:grid-cols-3 grid-rows-2 justify-items-center items-center">
+      <div class="flex justify-center items-center flex-col ">
+        <h1 class=" text-4xl">
           {{ currentWeather.name }}, {{ currentWeather.sys.country }}
         </h1>
-        <h2 class="text-white">
-          {{
-            new Date(currentWeather.dt * 1000).toLocaleString('en-UK', {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long'
-            })
-          }}
-        </h2>
+        <h3 class="">{{ formattedDate }}</h3>
       </div>
-      <img
-        class="w-20 h-20 self-center"
-        :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
-        :alt="`${currentWeather.weather[0].description} icon`"
-      />
-      <div class="flex flex-col items-center justify-center">
-        <p class="text-white text-5xl mb-3">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
-        <p class="text-gray-200 text-lg">{{ currentWeather.weather[0].main }}</p>
+      <div class="flex justify-center items-center">
+        <img class="w-20" :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
+          :alt="`${currentWeather.weather[0].description} icon`" />
+        <p class="font-semibold text-3xl">{{ currentWeather.weather[0].main }}</p>
       </div>
-    </section>
-    <section class="grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 gap-4 mt-4 md:mt-0">
-      <div class="text-center">
-        <p class="text-white font-bold">{{ currentWeather.main.temp_max.toFixed(1) }}°C</p>
-        <p class="text-gray-200 text-xs">High</p>
+      <div class="flex justify-center items-center text-3xl">
+
+        <p class="font-semibold">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
       </div>
       <div class="text-center">
-        <p class="text-white font-bold">{{ currentWeather.main.temp_min.toFixed(1) }}°C</p>
-        <p class="text-gray-200 text-xs">Low</p>
+        <p class=" font-semibold">{{ currentWeather.main.temp_max.toFixed(1) }}°C</p>
+        <p class=" text-xs font-">Highest</p>
       </div>
       <div class="text-center">
-        <p class="text-white font-bold">{{ (currentWeather.wind.speed * 3.4).toFixed(0) }} Km/h</p>
-        <p class="text-gray-200 text-xs">Wind</p>
+        <p class=" font-semibold">{{ currentWeather.main.temp_min.toFixed(1) }}°C</p>
+        <p class=" text-xs">Lowest</p>
       </div>
       <div class="text-center">
-        <p class="text-white font-bold">{{ currentWeather.main.pressure }} hPa</p>
-        <p class="text-gray-200 text-xs">Pressure</p>
+        <p class=" font-semibold">{{ (currentWeather.wind.speed * 3.4).toFixed(0) }} Km/h</p>
+        <p class=" text-xs">Wind</p>
       </div>
       <div class="text-center">
-        <p class="text-white font-bold">{{ currentWeather.main.humidity }}%</p>
-        <p class="text-gray-200 text-xs">Humidity</p>
+        <p class=" font-semibold">{{ currentWeather.main.pressure }} hPa</p>
+        <p class=" text-xs">Pressure</p>
       </div>
       <div class="text-center">
-        <p class="text-white font-bold">{{ formatHour(currentWeather.sys.sunrise) }}</p>
-        <p class="text-gray-200 text-xs">Sunrise</p>
+        <p class=" font-semibold">{{ currentWeather.main.humidity }}%</p>
+        <p class=" text-xs">Humidity</p>
+      </div>
+      <div class="text-center">
+        <p class=" font-semibold">{{ formatHour(currentWeather.sys.sunrise) }}</p>
+        <p class=" text-xs">Sunrise</p>
       </div>
     </section>
   </div>
