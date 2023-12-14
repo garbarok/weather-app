@@ -3,8 +3,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center gap-4">
       <input v-model="cityName" :required="!loadingLocation" placeholder="City"
         class="flex-grow input input-bordered w-full rounded" />
-      <input v-model="stateName" :required="!loadingLocation" placeholder="State"
-        class="flex-grow input input-bordered w-full rounded" />
+      <input v-model="stateName" placeholder="Country" class="flex-grow input input-bordered w-full rounded" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
       <button type="submit" class="btn btn-outline btn-primary rounded py-2 px-4 w-full">
@@ -38,10 +37,11 @@ export default {
   methods: {
     ...mapActions(['saveCity']),
     async searchWeather() {
+      const state = this.stateName || 'Spain';
       const weather = await fetchWeather(this.cityName, this.stateName)
       if (weather) {
         this.$emit('update-weather', weather)
-        this.$emit('search-submitted', { cityName: this.cityName, stateName: this.stateName })
+        this.$emit('search-submitted', { cityName: this.cityName, stateName: state })
       } else {
         alert('Weather data not found')
       }
