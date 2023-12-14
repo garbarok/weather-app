@@ -12,3 +12,8 @@
     border-color: theme('borderColor.DEFAULT', currentColor);
   }
 }
+
+:root,
+[data-theme] {
+  background-color: #F5F5F5;
+}

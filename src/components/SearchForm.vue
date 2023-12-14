@@ -1,25 +1,25 @@
 <template>
-  <form @submit.prevent="searchWeather" class="p-4 rounded-lg shadow-md">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+  <form @submit.prevent="searchWeather" class="rounded-lg shadow-md p-4 bg-white">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
       <input v-model="cityName" :required="!loadingLocation" placeholder="City"
-        class="flex-grow input input-bordered w-full" />
+        class="flex-grow input input-bordered w-full rounded" />
       <input v-model="stateName" :required="!loadingLocation" placeholder="State"
-        class="flex-grow input input-bordered w-full" />
+        class="flex-grow input input-bordered w-full rounded" />
     </div>
-    <div class="grid grid-cols-3 mt-4 gap-2">
-      <button type="submit" class="btn btn-outline btn-primary py-2 px-4 w-full sm:w-auto ">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+      <button type="submit" class="btn btn-outline btn-primary rounded py-2 px-4 w-full">
         Search
       </button>
-      <button @click="handleSaveCity(cityName, stateName)"
-        class="btn btn-outline btn-secondary py-2 px-4  w-full sm:w-auto">
+      <button @click="handleSaveCity(cityName, stateName)" class="btn btn-outline btn-secondary rounded py-2 px-4 w-full">
         Save City
       </button>
-      <button @click="getCurrentLocation" type="button" class="btn btn-outline btn-accent py-2 px-4 w-full sm:w-auto">
-        Get Current Location
+      <button @click="getCurrentLocation" type="button" class="btn btn-outline btn-accent rounded py-2 px-4 w-full">
+        Current Location
       </button>
     </div>
   </form>
 </template>
+
 
 
 <script>

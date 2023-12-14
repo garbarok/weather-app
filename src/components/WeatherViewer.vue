@@ -1,50 +1,52 @@
 <template>
-  <h3 v-if="currentWeather" class="text-3xl font-bold p-3 text-center">
-    Today's Forecast
-  </h3>
-  <div v-if="currentWeather" class="hero rounded-lg shadow-md h-auto">
-    <section class="w-full p-10 grid grid-cols-1 xl:grid-cols-3 grid-rows-2 justify-items-center items-center">
-      <div class="flex justify-center items-center flex-col ">
-        <h1 class=" text-4xl">
-          {{ currentWeather.name }}, {{ currentWeather.sys.country }}
-        </h1>
-        <h3 class="">{{ formattedDate }}</h3>
-      </div>
-      <div class="flex justify-center items-center">
-        <img class="w-20" :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
-          :alt="`${currentWeather.weather[0].description} icon`" />
-        <p class="font-semibold text-3xl">{{ currentWeather.weather[0].main }}</p>
-      </div>
-      <div class="flex justify-center items-center text-3xl">
-
-        <p class="font-semibold">{{ currentWeather.main.temp.toFixed(1) }} °C</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ currentWeather.main.temp_max.toFixed(1) }}°C</p>
-        <p class=" text-xs font-">Highest</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ currentWeather.main.temp_min.toFixed(1) }}°C</p>
-        <p class=" text-xs">Lowest</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ (currentWeather.wind.speed * 3.4).toFixed(0) }} Km/h</p>
-        <p class=" text-xs">Wind</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ currentWeather.main.pressure }} hPa</p>
-        <p class=" text-xs">Pressure</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ currentWeather.main.humidity }}%</p>
-        <p class=" text-xs">Humidity</p>
-      </div>
-      <div class="text-center">
-        <p class=" font-semibold">{{ formatHour(currentWeather.sys.sunrise) }}</p>
-        <p class=" text-xs">Sunrise</p>
-      </div>
-    </section>
-  </div>
+  <section class="pt-2">
+    <h3 v-if="currentWeather" class="text-3xl font-bold py-3 text-center bg-blue-200 rounded-t-lg">
+      Today's Forecast
+    </h3>
+    <div v-if="currentWeather" class="rounded-lg shadow-lg p-6 bg-white">
+      <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-center text-center">
+        <div>
+          <h1 class="text-xl md:text-2xl xl:text-3xl font-semibold">
+            {{ currentWeather.name }}, {{ currentWeather.sys.country }}
+          </h1>
+          <h3 class="text-sm md:text-lg">{{ formattedDate }}</h3>
+        </div>
+        <div
+          class="flex flex-col items-center md:flex-row md:items-center md:justify-center space-y-2 md:space-y-0 md:space-x-4">
+          <img class="w-20 md:w-24 xl:w-28" :src="`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`"
+            :alt="`${currentWeather.weather[0].description} icon`" />
+          <p class="font-semibold text-lg md:text-xl xl:text-2xl">{{ currentWeather.weather[0].main }}</p>
+        </div>
+        <div>
+          <p class="font-semibold text-xl md:text-2xl">{{ currentWeather.main.temp.toFixed(0) }} °C</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ currentWeather.main.temp_max.toFixed() }}°C</p>
+          <p class="text-xs">Highest</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ currentWeather.main.temp_min.toFixed() }}°C</p>
+          <p class="text-xs">Lowest</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ (currentWeather.wind.speed * 3.4).toFixed(0) }} Km/h</p>
+          <p class="text-xs">Wind</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ currentWeather.main.pressure }} hPa</p>
+          <p class="text-xs">Pressure</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ currentWeather.main.humidity }}%</p>
+          <p class="text-xs">Humidity</p>
+        </div>
+        <div>
+          <p class="font-semibold">{{ formatHour(currentWeather.sys.sunrise) }}</p>
+          <p class="text-xs">Sunrise</p>
+        </div>
+      </section>
+    </div>
+  </section>
 </template>
 
 <script>

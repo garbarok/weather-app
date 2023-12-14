@@ -1,15 +1,16 @@
 <template>
-  <div id="app" class="py-8 h-18 bg-[#F5F5F5] h-screen">
-    <div class="container mx-auto px-4 max-w-screen-lg">
-      <h1 class="text-4xl font-bold text-center p-5">Weather App</h1>
-      <SearchForm @update-weather="updateWeather" @search-submitted="onSearchSubmit" class="mb-6" />
-      <WeatherViewer v-if="!showRouterView" :weather="weather" class="mb-6" />
-      <router-view v-if="showRouterView" class="mb-6"></router-view>
-      <today-forecast v-if="city" :city="city" :state="state" class="mb-6"></today-forecast>
+  <div id="app" class="py-8 bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Weather App</h1>
+      <SearchForm @update-weather="updateWeather" @search-submitted="onSearchSubmit" class="mb-8" />
+      <WeatherViewer v-if="!showRouterView" :weather="weather" class="mb-8" />
+      <router-view v-if="showRouterView" class="mb-8"></router-view>
+      <today-forecast v-if="city" :city="city" :state="state" class="mb-8"></today-forecast>
       <CityList @city-clicked="onCityClick" />
     </div>
   </div>
 </template>
+
 
 <script>
 import WeatherViewer from './components/WeatherViewer.vue'
